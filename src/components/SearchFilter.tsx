@@ -1,5 +1,4 @@
 import React from 'react'
-import { TextField, FormControl, InputLabel, Select, MenuItem, Box } from '@mui/material'
 
 interface SearchFilterProps {
   searchTerm: string;
@@ -15,26 +14,25 @@ export default function SearchFilter({
   setEnrollmentFilter 
 }: SearchFilterProps) {
   return (
-    <Box sx={{ mb: 2, display: 'flex', gap: 2 }}>
-      <TextField
-        label="Search by name"
+    <div className="mb-4 flex gap-4">
+      <input
+        type="text"
+        placeholder="Search by name"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        fullWidth
-        margin="normal"
+        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <FormControl fullWidth margin="normal">
-        <InputLabel>Enrollment Status</InputLabel>
-        <Select
+      <div className="w-full">
+        <select
           value={enrollmentFilter}
           onChange={(e) => setEnrollmentFilter(e.target.value)}
-          label="Enrollment Status"
+          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <MenuItem value="all">All</MenuItem>
-          <MenuItem value="active">Active</MenuItem>
-          <MenuItem value="inactive">Inactive</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+          <option value="all">All</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+      </div>
+    </div>
   )
 }
